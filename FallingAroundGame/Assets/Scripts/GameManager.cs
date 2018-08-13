@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,18 +13,20 @@ public class GameManager : MonoBehaviour
     [Header("RockSettings")]
     [SerializeField] private GameObject[] rocks;
 
+    //[SerializeField] private GameObject playerGO;
+
     private Transform floorHolder;
     private Transform lavaHolder;
 
     void Start ()
     {
+        //if(playerGO != null)
+        //{
+        //    Instantiate(playerGO, new Vector3(10, 0f, 10), Quaternion.identity);
+        //}
+
         LavaSetup();
         FloorSetup();
-	}
-	
-	void Update ()
-    {
-        
 	}
 
     private void FloorSetup()
