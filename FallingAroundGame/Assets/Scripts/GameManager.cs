@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,25 +16,24 @@ public class GameManager : MonoBehaviour
     [Header("RockSettings")]
     [SerializeField] private GameObject[] rocks;
 
-    //[SerializeField] private GameObject playerGO;
-
     private Transform floorHolder;
     private Transform lavaHolder;
+    List<GameObject> objs;
+
+    [SerializeField] private float secondsToDestroy;
 
     void Start ()
     {
-        //if(playerGO != null)
-        //{
-        //    Instantiate(playerGO, new Vector3(10, 0f, 10), Quaternion.identity);
-        //}
-
         LavaSetup();
         FloorSetup();
-	}
+
+        objs = GameObject.FindObjectsOfType<GameObject>().Where(obj => obj.name.Contains("Floor")).ToList();
+        StartCoroutine(DestroyFloor());
+    }
 
     private void FloorSetup()
     {
-        floorHolder = new GameObject("Floors").transform;
+        floorHolder = new GameObject("Ground").transform;
         for(int x=-1; x<columns +1; x++)
         {
             for(int y=-1; y<rows +1; y++)
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     private void LavaSetup()
     {
         lavaHolder = new GameObject("Lavas").transform;
@@ -58,5 +61,18 @@ public class GameManager : MonoBehaviour
                 instance.transform.SetParent(lavaHolder);
             }
         }
+    }
+
+    private IEnumerator DestroyFloor()
+    {
+        while(true && objs.Count > 0)
+        {
+            //Debug.Log(Random.Range(0, objs.Count));
+            int randomElement = Random.Range(0, objs.Count);
+            objs.ElementAt(randomElement).SetActive(false);
+
+            yield return new WaitForSeconds(secondsToDestroy);
+        }
+        
     }
 }

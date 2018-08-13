@@ -17,6 +17,9 @@ public abstract class Character : MonoBehaviour
 
     protected Animator myAnimator;
 
+    [SerializeField] private ForceMode forceMode;
+    [SerializeField] private float gravity = 9.81f;
+
 	protected virtual void Start ()
     {
         myRigidbody = GetComponent<Rigidbody>();
@@ -31,6 +34,7 @@ public abstract class Character : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        myRigidbody.AddForce(Vector3.down * gravity, forceMode);
     }
 
     public void Move()
