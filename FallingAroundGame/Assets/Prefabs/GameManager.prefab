@@ -61,5 +61,5 @@ MonoBehaviour:
   - {fileID: 1197393179240260, guid: 0f885a35df83a944ca79b6b2da008bcf, type: 2}
   - {fileID: 1736820770667960, guid: dbd4929e6e796564385b2f6d185dbdea, type: 2}
   - {fileID: 1887318140213894, guid: 2c5e385f57b4b3448b0326c5ea794ed0, type: 2}
-  secondsToDestroy: 0.5
+  secondsToDestroy: 0.25
   player: {fileID: 0}

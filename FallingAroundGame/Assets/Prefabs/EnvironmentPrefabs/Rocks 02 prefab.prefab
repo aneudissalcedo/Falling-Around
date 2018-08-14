@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33047487890427422}
   - component: {fileID: 23703920768436146}
   - component: {fileID: 64449193661799300}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rocks 02 prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
