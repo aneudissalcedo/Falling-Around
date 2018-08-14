@@ -16,11 +16,11 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Unselectable
+  - Floor
+  - Lava
+  - Rocks
+  - Player
   - 
   - 
   - 
