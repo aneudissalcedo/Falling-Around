@@ -5,9 +5,21 @@ public class Player : Character
     private Transform playerTransform;
     private Quaternion targetRotation;
     [SerializeField] private float smooth;
+
+    private bool alive;
+    public bool Alive
+    {
+        get
+        {
+            return alive;
+        }
+    }
+
     protected override void Start()
     {
         playerTransform = GetComponent<Transform>();
+        alive = true;
+
         base.Start();
     }
 
@@ -113,6 +125,15 @@ public class Player : Character
                     targetRotation,
                     Time.deltaTime * smooth
                 );
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("LavaFloor") && Alive == true)
+        {
+            alive = false;
+            gameObject.SetActive(false);
         }
     }
 }

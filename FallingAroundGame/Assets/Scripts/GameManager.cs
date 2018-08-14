@@ -22,13 +22,21 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float secondsToDestroy;
 
+    [SerializeField] private GameObject player;
+    private Player playerScript;
+    private bool gameOver = false;
+
     void Start ()
     {
+        playerScript = player.GetComponent<Player>();
+        
         LavaSetup();
         FloorSetup();
 
         objs = GameObject.FindObjectsOfType<GameObject>().Where(obj => obj.name.Contains("Floor")).ToList();
+        
         StartCoroutine(DestroyFloor());
+        StartCoroutine(GameOver());
     }
 
     private void FloorSetup()
@@ -65,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DestroyFloor()
     {
-        while(true && objs.Count > 0)
+        while((true && objs.Count > 0) && (gameOver == false))
         {
             //Debug.Log(Random.Range(0, objs.Count));
             int randomElement = Random.Range(0, objs.Count);
@@ -73,6 +81,28 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(secondsToDestroy);
         }
-        
+    }
+
+    private IEnumerator GameOver()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+
+            if (playerScript.Alive == false)
+            {
+                Debug.Log("GAME OVER!");
+                gameOver = true;
+
+                yield return new WaitForSeconds(3);
+                LevelManager levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+                Debug.Log("RETURNING TO MENU!!");
+                levelManager.LoadLevel("Menu");
+            }
+            else
+            {
+                Debug.Log("PLAYING!");
+            }
+        }
     }
 }
