@@ -56,8 +56,8 @@ LightmapSettings:
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
-    m_Resolution: 2
-    m_BakeResolution: 40
+    m_Resolution: 0.0001
+    m_BakeResolution: 0.0001
     m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
@@ -209,6 +209,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 357397769}
+    - target: {fileID: 82373655958939694, guid: b04894504a1776f42b48a0815b2d016e,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b04894504a1776f42b48a0815b2d016e, type: 2}
   m_IsPrefabAsset: 0
@@ -371,7 +376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4446455637429552, guid: e9aef2e543ef39844a066c919c8ffc60, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.24999952
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4446455637429552, guid: e9aef2e543ef39844a066c919c8ffc60, type: 2}
       propertyPath: m_LocalPosition.z

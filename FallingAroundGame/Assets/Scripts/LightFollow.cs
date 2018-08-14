@@ -24,6 +24,15 @@ public class LightFollow : MonoBehaviour
         }
     }
 
+    //void OnTriggerEnter(Collider col)
+    //{
+    //    if (col.CompareTag("ParticleLava"))
+    //    {
+    //        Debug.Log("LAVA_P");
+    //    }
+
+    //}
+
     void FixedUpdate()
     {
         Vector3 desiredPosition = target.transform.position + offset;
