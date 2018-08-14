@@ -26,6 +26,19 @@ public class GameManager : MonoBehaviour
     private Player playerScript;
     private bool gameOver = false;
 
+    public bool GameOverProperty
+    {
+        get
+        {
+            return gameOver;
+        }
+
+        set
+        {
+            gameOver = value;
+        }
+    }
+
     void Start ()
     {
         playerScript = player.GetComponent<Player>();
@@ -73,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator DestroyFloor()
     {
-        while((true && objs.Count > 0) && (gameOver == false))
+        while((true && objs.Count > 0) && (GameOverProperty == false))
         {
             //Debug.Log(Random.Range(0, objs.Count));
             int randomElement = Random.Range(0, objs.Count);
@@ -92,7 +105,7 @@ public class GameManager : MonoBehaviour
             if (playerScript.Alive == false)
             {
                 Debug.Log("GAME OVER!");
-                gameOver = true;
+                GameOverProperty = true;
 
                 yield return new WaitForSeconds(3);
                 LevelManager levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
